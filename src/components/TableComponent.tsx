@@ -17,6 +17,9 @@ const TableComponent = ({
       setExpandedRow(x);
     }
   };
+  const deleteRow = (index: number):void => {
+    
+  }
   useEffect(() => {
     setExpandedRow(-1)
   }, [tableData.name])
@@ -50,6 +53,7 @@ const TableComponent = ({
                       >
                         {expandedRow === index ? "collapse" : "expand"}
                       </span>
+                      <span onClick={()=>{deleteRow(index)}}>delete</span>
                     </td>
                   </tr>
                   {expandedRow === index && (

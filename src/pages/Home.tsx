@@ -18,8 +18,7 @@ const HomeView = () => {
             name: tableData.name,
             items: res.data,
           });
-        }); 
-
+        });
         setFetchingData(false);
       };
       getData()

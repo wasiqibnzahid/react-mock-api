@@ -1,6 +1,9 @@
-import React from "react";
-import {itemType} from '../../interface/index'
-const DetailsTable = ({item} : {item: itemType}) => {
+import React, { useState } from "react";
+import { itemType } from "../../interface/index";
+const DetailsTable = ({ item }: { item: itemType }) => {
+  const [editMode, setEditMode] = useState<boolean>(false);
+  const [itemDesc, setItemDesc] = useState<string>(item.description);
+
   return (
     <table className="details-table">
       <thead>
@@ -11,16 +14,32 @@ const DetailsTable = ({item} : {item: itemType}) => {
         </tr>
       </thead>
       <tbody>
-        <td>
-        {item.description}
-        </td>
-        <td>
-            {item.material}
-        </td>
-        <td>
-            {item.color}
-        </td>
-        </tbody>
+        <tr>
+          <td>
+            {!editMode ? (
+              <p>{item.description}</p>
+            ) : (
+              <textarea
+                style={{ display: "block" }}
+                defaultValue={item.description}
+                onChange={(e) => {
+                  setItemDesc(e.target.value);
+                }}
+              />
+            )}
+            <button
+              onClick={() => {
+                setEditMode(!editMode);
+              }}
+            >
+              {!editMode ? "edit" : "cancel"}
+            </button>
+            {editMode && item.description !== itemDesc && <button>save</button>}
+          </td>
+          <td>{item.material}</td>
+          <td>{item.color}</td>
+        </tr>
+      </tbody>
     </table>
   );
 };
