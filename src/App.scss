@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+}
+
+$selectedColor: red;
+
+// Utilities
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.container {
+  padding: 2rem 8rem;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+// Tabs in Home Page
+
+.tab-switch-container {
+  flex-wrap: nowrap;
+  padding-top: 4rem;
+
+  > div {
+    width: 25%;
+    @extend .text-center;
+
+    &.selected {
+      > span {
+        color: $selectedColor;
+      }
+    }
+
+    &:not(.selected) {
+      > span:hover {
+        color: #fff;
+      }
+    }
+
+    > span {
+      @extend .bold, .clickable;
+
+      transition: 200ms;
+      color: #888;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+.table-header {
+  font-size: 2rem;
+  padding: 3rem 0;
+  color: #fff;
+  font-weight: 400;
+}
+
+.main-data-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: 1rem 0;
+  }
+  &,
+  td,
+  th {
+    border: 1px solid #fff;
+  }
+  th {
+    &:not(.w-40) {
+      width: 20%;
+    }
+    &.w-40 {
+      width: 40%;
+    }
+  }
+
+  td {
+    padding: 0.75rem 1rem;
+
+    text-align: center;
+  }
+  .details-table { 
+    width: 60%;
+    min-width: 600px;
+    max-width: 800px;
+    margin:0 auto;
+    border-collapse: collapse;
+    tr {
+        transition: 300ms;
+    }
+    &, td, th {
+        border: none;
+    }
+    td {
+        &:first-of-type {
+            text-align: left;   
+        }
+    }
+    thead td, th {
+        border-bottom: 1px solid #444;
+    }
+  }
+}
+
+// Loader for fetching data
+.fetchingLoader {
+    display: block;
+    margin: 1.5rem auto;
+    width: 100%;
+    height: 5rem;
+    width: 5rem;
+    border-radius: 50%;
+    border:1px solid #fff ;
+    border-bottom: none;
+    border-right: none;
+     
+animation: loaderAnimation linear 1s infinite;
+}
+@keyframes loaderAnimation {
+    
+    100% {
+        transform: rotate(360deg);
+    }
+}
